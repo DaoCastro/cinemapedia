@@ -24,7 +24,8 @@ class MoviesSlideShow extends StatelessWidget {
             builder: DotSwiperPaginationBuilder(
                 activeColor: colors.primary, color: colors.secondary)),
         itemCount: movies.length,
-        itemBuilder: (context, index) => _Slide(movie: movies[index]),
+        itemBuilder: (context, index) =>
+            FadeInRight(child: _Slide(movie: movies[index])),
       ),
     );
   }
