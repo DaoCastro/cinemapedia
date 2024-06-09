@@ -1,18 +1,26 @@
+import 'package:cinemapedia/presentation/views/home_views/favorite_view.dart';
+import 'package:cinemapedia/presentation/views/home_views/home_view.dart';
 import 'package:cinemapedia/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
   static const name = "home-screen";
+  final int pageIndex;
 
-  final Widget childView;
+  const HomeScreen({super.key, required this.pageIndex});
 
-  const HomeScreen({super.key, required this.childView});
+  final viewRoutes = const <Widget>[HomeView(), SizedBox(), FavoriteView()];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: childView,
-      bottomNavigationBar: const CustonButomNavigationbar(),
+      body: IndexedStack(
+        index: pageIndex,
+        children: viewRoutes,
+      ),
+      bottomNavigationBar: CustonButomNavigationbar(
+        currentIndex: pageIndex,
+      ),
     );
   }
 }
